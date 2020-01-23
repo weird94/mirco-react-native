@@ -1,0 +1,15 @@
+{
+  "name": "@crgt/rn-link",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gi-dev.ccrgt.com/webfront/FE-BASE/dynamic-rn.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
