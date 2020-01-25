@@ -5,7 +5,7 @@ import { withNavigation } from "react-navigation";
 const Link = ({ navigation, url, children, ...extProps }) => {
   return (
     <TouchableOpacity
-      activeOpacity={0.9}
+      activeOpacity={0.95}
       {...extProps}
       onPress={() => {
         navigation.navigate(Symbol.for("remote-component-container"), { url });
