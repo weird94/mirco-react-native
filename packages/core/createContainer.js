@@ -29,7 +29,7 @@ export function createContainer({
     }
 
     buildComponent() {
-      const url = this.props.navigation?.state?.params?.url;
+      const url = this.props.navigation.getParam("url");
       this.RemoteComponent = React.lazy(() => loadRemoteComponent(url));
     }
 
@@ -55,7 +55,7 @@ export function createContainer({
         <ErrorTips onRetry={this.handleRetry} />
       ) : (
         <Suspense key={refreshTag} fallback={<Loading />}>
-          <RemoteComponent />
+          <RemoteComponent {...this.props} />
         </Suspense>
       );
     }
