@@ -1,6 +1,7 @@
 import React from "react";
 import * as ReactNative from "react-native";
 import ReactNavigation from "react-navigation";
+import ReactNavigationStack from "react-navigation-stack";
 
 function require(name) {
   if (name == "REACT") {
@@ -9,6 +10,8 @@ function require(name) {
     return ReactNative;
   } else if (name == "REACT_NAVIGATION") {
     return ReactNavigation;
+  } else if (name == "REACT_NAVIGATION_STACK") {
+    return ReactNavigationStack;
   } else {
     throw `require unsupported external module: ${name}`;
   }
