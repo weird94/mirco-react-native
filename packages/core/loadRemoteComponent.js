@@ -3,6 +3,10 @@ import * as ReactNative from "react-native";
 import ReactNavigation from "react-navigation";
 import ReactNavigationStack from "react-navigation-stack";
 
+/**
+ * handle the webpack external module
+ * @param {string} name module name
+ */
 function require(name) {
   if (name == "REACT") {
     return React;
