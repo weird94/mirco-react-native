@@ -3,10 +3,15 @@ import loadRemoteComponent from "./loadRemoteComponent";
 
 const noop = () => {};
 
+/**
+ *
+ * @param {{ Loading: React.Component }} param0
+ */
 export function createContainer({
   Loading,
   ErrorTips,
-  trackRenderError = noop
+  trackRenderError = noop,
+  injectFetch
 } = {}) {
   if (!Loading) {
     throw "invailed options, prop `Loading` is required";
@@ -25,12 +30,15 @@ export function createContainer({
         refreshTag: 0
       };
 
+      this.focusEvent = null;
       this.buildComponent();
     }
 
     buildComponent() {
       const url = this.props.navigation.getParam("url");
-      this.RemoteComponent = React.lazy(() => loadRemoteComponent(url));
+      this.RemoteComponent = React.lazy(() =>
+        loadRemoteComponent(url, injectFetch || fetch)
+      );
     }
 
     handleRetry = () => {
@@ -42,9 +50,40 @@ export function createContainer({
       this.setState({ refreshTag: Date.now() });
     };
 
+    addFocusEvent() {
+      const navigation = this.props.navigation;
+      this.focusEvent = navigation.addEventListener(
+        "didFocus",
+        this.handleFocus
+      );
+    }
+
+    removeFocusEvent() {
+      if (this.focusEvent) {
+        this.focusEvent.remove();
+        this.focusEvent = null;
+      }
+    }
+
+    handleFocus() {
+      const { navigation, onBackToTop } = this.props;
+      const stackDepth = navigation.dangerouslyGetParent().routes.length;
+      if (stackDepth === 1) {
+        typeof onBackToTop === "function" && onBackToTop();
+      }
+    }
+
     componentDidCatch(error) {
       trackRenderError(error);
       this.setState({ error: true });
+    }
+
+    componentDidMount() {
+      this.addFocusEvent();
+    }
+
+    componentWillUnmount() {
+      this.removeFocusEvent();
     }
 
     render() {

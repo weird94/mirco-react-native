@@ -24,8 +24,9 @@ function require(name) {
 /**
  * 加载远端 commonjs 规范的 ReactComponent
  * @param {string} url
+ * @param {function} fetch 符合 w3c 规范的 fetch
  */
-export default function loadRemoteComponent(url) {
+export default function loadRemoteComponent(url, fetch) {
   return fetch(url)
     .then(res => res.text())
     .then(body => {
