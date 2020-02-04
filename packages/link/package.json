@@ -1,6 +1,6 @@
 {
   "name": "@crgt/gtrn-link",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@crgt/dynamic-rn": "^1.0.2",
+    "@crgt/dynamic-rn": "^1.0.3",
     "react": "^16.12.0",
     "react-native": "^0.61.5",
     "react-navigation": "^4.0.10",
