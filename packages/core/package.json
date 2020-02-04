@@ -1,6 +1,6 @@
 {
   "name": "@crgt/dynamic-rn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -20,13 +20,13 @@
     "react-navigation-stack": "^2.0.15"
   },
   "devDependencies": {
-    "rollup": "^1.31.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "babel-preset-latest": "^6.24.1",
+    "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.2.0"
   }
