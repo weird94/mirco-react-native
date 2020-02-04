@@ -1,6 +1,11 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "build-core": "cd packages/core && rollup -c && cd .. && cd ..",
+    "build-link": "cd packages/link && rollup -c && cd .. && cd ..",
+    "build": "npm run build-core && npm run build-link"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
