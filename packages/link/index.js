@@ -1,6 +1,7 @@
-import React from "react";
-import { TouchableOpacity } from "react-native";
-import { withNavigation } from "react-navigation";
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { CONTAINER } from '@crgt/dynamic-rn';
 
 const Link = ({ navigation, url, children, ...extProps }) => {
   return (
@@ -8,7 +9,7 @@ const Link = ({ navigation, url, children, ...extProps }) => {
       activeOpacity={0.95}
       {...extProps}
       onPress={() => {
-        navigation.navigate(Symbol.for("remote-component-container"), { url });
+        navigation.navigate(CONTAINER, { url });
       }}
     >
       {children}
