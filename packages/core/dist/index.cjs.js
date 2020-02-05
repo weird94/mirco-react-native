@@ -1,1 +1,178 @@
-"use strict";function t(t){return t&&"object"==typeof t&&"default"in t?t.default:t}Object.defineProperty(exports,"__esModule",{value:!0});var e=require("react"),n=t(e),r=require("react-native"),o=t(require("react-navigation"));function i(t){if("REACT"==t)return n;if("REACT_NATIVE"==t)return r;if("REACT_NAVIGATION"==t)return o;throw"require unsupported external module: "+t}function u(t,e){return void 0===e&&(e=fetch),e(t).then((function(t){return t.text()})).then((function(t){var e={};return new Function("exports","require",t)(e,i),e.__esModule?e.default:e}))}var a=function(t,e){return(a=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)e.hasOwnProperty(n)&&(t[n]=e[n])})(t,e)};var c=function(){return(c=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var o in e=arguments[n])Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t}).apply(this,arguments)},s=function(){};function p(t){var r=t.Loading,o=t.ErrorTips,i=t.trackRenderError,p=void 0===i?s:i,f=t.injectFetch;if(!r)throw"invailed options, prop `Loading` is required";if(!o)throw"invailed options, prop `ErrorTips` is required";return(function(t){function i(e){var n=t.call(this,e)||this;return n.handleRetry=function(){n.setState({error:!1})},n.handleRefresh=function(){n.buildComponent(),n.setState({refreshTag:Date.now()})},n.getStackDepth=function(){var t,e=null===(t=n.props.navigation.dangerouslyGetParent())||void 0===t?void 0:t.state;return e&&e.routes?e.routes.length:1},n.state={error:!1,refreshTag:0},n.focusEvent=null,n.buildComponent(),n}return function(t,e){function n(){this.constructor=t}a(t,e),t.prototype=null===e?Object.create(e):(n.prototype=e.prototype,new n)}(i,t),i.prototype.buildComponent=function(){var t=this.props.navigation.getParam("url");n.lazy((function(){return u(t,f||fetch)}))},i.prototype.addFocusEvent=function(){var t=this.props.navigation;this.focusEvent=t.addListener("didFocus",this.handleFocus)},i.prototype.removeFocusEvent=function(){this.focusEvent&&(this.focusEvent.remove(),this.focusEvent=null)},i.prototype.handleFocus=function(){var t=this.props.onBackToTop;1===this.getStackDepth()&&"function"==typeof t&&t()},i.prototype.componentDidCatch=function(t){p(t),this.setState({error:!0})},i.prototype.componentDidMount=function(){this.addFocusEvent()},i.prototype.componentWillUnmount=function(){this.removeFocusEvent()},i.prototype.render=function(){var t=this.RemoteComponent,i=this.state,u=i.error,a=i.refreshTag;return u?n.createElement(o,{onRetry:this.handleRetry}):n.createElement(e.Suspense,{key:a,fallback:n.createElement(r,null)},n.createElement(t,c({},this.props)))},i}(n.Component))}var f=p({Loading:function(){return n.createElement(r.View,null)},ErrorTips:function(){return n.createElement(r.View,null)},trackRenderError:console.warn});exports.CONTAINER="$$dynamic_rn_container",exports.RemoteComponentContainer=f,exports.createContainer=p,exports.loadRemoteComponent=u;
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = require('react');
+var React__default = _interopDefault(React);
+var ReactNative = require('react-native');
+var ReactNavigation = _interopDefault(require('react-navigation'));
+
+function _require(name) {
+    if (name == 'REACT') {
+        return React__default;
+    }
+    else if (name == 'REACT_NATIVE') {
+        return ReactNative;
+    }
+    else if (name == 'REACT_NAVIGATION') {
+        return ReactNavigation;
+    }
+    else {
+        throw "require unsupported external module: " + name;
+    }
+}
+function loadRemoteComponent(url, _fetch) {
+    if (_fetch === void 0) { _fetch = fetch; }
+    return _fetch(url)
+        .then(function (res) { return res.text(); })
+        .then(function (body) {
+        // webpack commonjs 规范模块
+        var exports = {};
+        var createComponent = new Function('exports', 'require', body);
+        createComponent(exports, _require);
+        return exports.__esModule ? exports.default : exports;
+    });
+}
+
+var Loading = function () {
+    return React__default.createElement(ReactNative.View, null);
+};
+
+var ErrorTips = function () {
+    return React__default.createElement(ReactNative.View, null);
+};
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var noop = function () { };
+function createContainer(_a) {
+    var Loading = _a.Loading, ErrorTips = _a.ErrorTips, _b = _a.trackRenderError, trackRenderError = _b === void 0 ? noop : _b, injectFetch = _a.injectFetch;
+    if (!Loading) {
+        throw 'invailed options, prop `Loading` is required';
+    }
+    if (!ErrorTips) {
+        throw 'invailed options, prop `ErrorTips` is required';
+    }
+    return /** @class */ (function (_super) {
+        __extends(RemoteComponentContainer, _super);
+        function RemoteComponentContainer(props) {
+            var _this = _super.call(this, props) || this;
+            _this.handleRetry = function () {
+                _this.setState({ error: false });
+            };
+            _this.handleRefresh = function () {
+                _this.buildComponent();
+                _this.setState({ refreshTag: Date.now() });
+            };
+            _this.getStackDepth = function () {
+                var _a;
+                var parentState = (_a = _this.props.navigation.dangerouslyGetParent()) === null || _a === void 0 ? void 0 : _a.state;
+                if (parentState && parentState.routes) {
+                    return parentState.routes.length;
+                }
+                else {
+                    return 1;
+                }
+            };
+            _this.state = {
+                error: false,
+                refreshTag: 0
+            };
+            _this.focusEvent = null;
+            _this.buildComponent();
+            return _this;
+        }
+        RemoteComponentContainer.prototype.buildComponent = function () {
+            var url = this.props.navigation.getParam('url');
+            var RemoteComponent = React__default.lazy(function () { return loadRemoteComponent(url, injectFetch || fetch); });
+        };
+        RemoteComponentContainer.prototype.addFocusEvent = function () {
+            var navigation = this.props.navigation;
+            this.focusEvent = navigation.addListener('didFocus', this.handleFocus);
+        };
+        RemoteComponentContainer.prototype.removeFocusEvent = function () {
+            if (this.focusEvent) {
+                this.focusEvent.remove();
+                this.focusEvent = null;
+            }
+        };
+        RemoteComponentContainer.prototype.handleFocus = function () {
+            var onBackToTop = this.props.onBackToTop;
+            var stackDepth = this.getStackDepth();
+            if (stackDepth === 1) {
+                typeof onBackToTop === 'function' && onBackToTop();
+            }
+        };
+        RemoteComponentContainer.prototype.componentDidCatch = function (error) {
+            trackRenderError(error);
+            this.setState({ error: true });
+        };
+        RemoteComponentContainer.prototype.componentDidMount = function () {
+            this.addFocusEvent();
+        };
+        RemoteComponentContainer.prototype.componentWillUnmount = function () {
+            this.removeFocusEvent();
+        };
+        RemoteComponentContainer.prototype.render = function () {
+            var RemoteComponent = this.RemoteComponent;
+            var _a = this.state, error = _a.error, refreshTag = _a.refreshTag;
+            return error ? (React__default.createElement(ErrorTips, { onRetry: this.handleRetry })) : (React__default.createElement(React.Suspense, { key: refreshTag, fallback: React__default.createElement(Loading, null) },
+                React__default.createElement(RemoteComponent, __assign({}, this.props))));
+        };
+        return RemoteComponentContainer;
+    }(React__default.Component));
+}
+
+var Container = createContainer({
+    Loading: Loading,
+    ErrorTips: ErrorTips,
+    trackRenderError: console.warn
+});
+console.log('a');
+
+var CONTAINER = '$$dynamic_rn_container';
+
+exports.CONTAINER = CONTAINER;
+exports.RemoteComponentContainer = Container;
+exports.createContainer = createContainer;
+exports.loadRemoteComponent = loadRemoteComponent;

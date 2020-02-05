@@ -2,9 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build-core": "cd packages/core && rollup -c && cd .. && cd ..",
-    "build-link": "cd packages/link && rollup -c && cd .. && cd ..",
-    "build": "npm run build-core && npm run build-link"
+    "build-core": "cd packages/core && rollup -c && cd ../../",
+    "build-link": "cd packages/link && rollup -c && cd ../../",
+    "compile-core": "cd packages/core && tsc & cd ../../",
+    "build": "npm run build-core && npm run build-link && npm run compile-core"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

@@ -1,13 +1,15 @@
 /// <reference types="react" />
+/// <reference types="react-navigation" />
 declare const Container: {
     new (props: any): {
         RemoteComponent: import("react").LazyExoticComponent<import("react").ComponentType<any>>;
-        focusEvent: import("react-navigation").NavigationEventSubscription | null;
+        focusEvent: import("react-navigation").NavigationEventSubscription;
         buildComponent(): void;
         handleRetry: () => void;
         handleRefresh: () => void;
         addFocusEvent(): void;
         removeFocusEvent(): void;
+        getStackDepth: () => any;
         handleFocus(): void;
         componentDidCatch(error: any): void;
         componentDidMount(): void;
@@ -22,21 +24,21 @@ declare const Container: {
             refreshTag: number;
         }>, props: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>) => {
             error: any;
             refreshTag: number;
         } | Pick<{
             error: any;
             refreshTag: number;
-        }, K> | null) | Pick<{
+        }, K>) | Pick<{
             error: any;
             refreshTag: number;
-        }, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        }, K>, callback?: () => void): void;
+        forceUpdate(callback?: () => void): void;
         readonly props: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }> & Readonly<{
             children?: import("react").ReactNode;
         }>;
@@ -49,21 +51,21 @@ declare const Container: {
         };
         shouldComponentUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;
         }>, nextContext: any): boolean;
         getSnapshotBeforeUpdate?(prevProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, prevState: Readonly<{
             error: any;
             refreshTag: number;
         }>): any;
         componentDidUpdate?(prevProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, prevState: Readonly<{
             error: any;
             refreshTag: number;
@@ -72,27 +74,27 @@ declare const Container: {
         UNSAFE_componentWillMount?(): void;
         componentWillReceiveProps?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, nextContext: any): void;
         UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, nextContext: any): void;
         componentWillUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;
         }>, nextContext: any): void;
         UNSAFE_componentWillUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
+            onBackToTop?: () => void;
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;
         }>, nextContext: any): void;
     };
-    contextType?: import("react").Context<any> | undefined;
+    contextType?: import("react").Context<any>;
 };
 export default Container;

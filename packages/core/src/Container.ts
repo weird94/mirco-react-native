@@ -1,6 +1,6 @@
-import Loading from "./Loading";
-import ErrorTips from "./ErrorTips";
-import { createContainer } from "./createContainer";
+import Loading from './Loading';
+import ErrorTips from './ErrorTips';
+import { createContainer } from './createContainer';
 
 const Container = createContainer({
   Loading,
@@ -8,4 +8,5 @@ const Container = createContainer({
   trackRenderError: console.warn
 });
 
+console.log('a');
 export default Container;

@@ -56,6 +56,16 @@ function createContainer(_a) {
                 _this.buildComponent();
                 _this.setState({ refreshTag: Date.now() });
             };
+            _this.getStackDepth = function () {
+                var _a;
+                var parentState = (_a = _this.props.navigation.dangerouslyGetParent()) === null || _a === void 0 ? void 0 : _a.state;
+                if (parentState && parentState.routes) {
+                    return parentState.routes.length;
+                }
+                else {
+                    return 1;
+                }
+            };
             _this.state = {
                 error: false,
                 refreshTag: 0
@@ -79,9 +89,8 @@ function createContainer(_a) {
             }
         };
         RemoteComponentContainer.prototype.handleFocus = function () {
-            var _a;
-            var _b = this.props, navigation = _b.navigation, onBackToTop = _b.onBackToTop;
-            var stackDepth = (_a = navigation.dangerouslyGetParent()) === null || _a === void 0 ? void 0 : _a.routes.length;
+            var onBackToTop = this.props.onBackToTop;
+            var stackDepth = this.getStackDepth();
             if (stackDepth === 1) {
                 typeof onBackToTop === 'function' && onBackToTop();
             }

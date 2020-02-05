@@ -8,100 +8,49 @@ declare type ContainerOptions = {
     trackRenderError?: (error: any) => void;
     injectFetch?: typeof fetch;
 };
+declare type Props = {
+    navigation: NavigationScreenProp<any>;
+    onBackToTop?: () => void;
+};
+declare type State = {
+    error: any;
+    refreshTag: number;
+};
 export declare function createContainer({ Loading, ErrorTips, trackRenderError, injectFetch }: ContainerOptions): {
     new (props: any): {
         RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
-        focusEvent: NavigationEventSubscription | null;
+        focusEvent: NavigationEventSubscription;
         buildComponent(): void;
         handleRetry: () => void;
         handleRefresh: () => void;
         addFocusEvent(): void;
         removeFocusEvent(): void;
+        getStackDepth: () => any;
         handleFocus(): void;
         componentDidCatch(error: any): void;
         componentDidMount(): void;
         componentWillUnmount(): void;
         render(): JSX.Element;
         context: any;
-        setState<K extends "error" | "refreshTag">(state: {
-            error: any;
-            refreshTag: number;
-        } | ((prevState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>, props: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>) => {
-            error: any;
-            refreshTag: number;
-        } | Pick<{
-            error: any;
-            refreshTag: number;
-        }, K> | null) | Pick<{
-            error: any;
-            refreshTag: number;
-        }, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }> & Readonly<{
+        setState<K extends "error" | "refreshTag">(state: State | ((prevState: Readonly<State>, props: Readonly<Props>) => State | Pick<State, K>) | Pick<State, K>, callback?: () => void): void;
+        forceUpdate(callback?: () => void): void;
+        readonly props: Readonly<Props> & Readonly<{
             children?: React.ReactNode;
         }>;
-        state: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>;
+        state: Readonly<State>;
         refs: {
             [key: string]: React.ReactInstance;
         };
-        shouldComponentUpdate?(nextProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, nextState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>, nextContext: any): boolean;
-        getSnapshotBeforeUpdate?(prevProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, prevState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>): any;
-        componentDidUpdate?(prevProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, prevState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>, snapshot?: any): void;
+        shouldComponentUpdate?(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): boolean;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<Props>, prevState: Readonly<State>): any;
+        componentDidUpdate?(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void;
         componentWillMount?(): void;
         UNSAFE_componentWillMount?(): void;
-        componentWillReceiveProps?(nextProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, nextContext: any): void;
-        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, nextContext: any): void;
-        componentWillUpdate?(nextProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, nextState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>, nextContext: any): void;
-        UNSAFE_componentWillUpdate?(nextProps: Readonly<{
-            navigation: NavigationScreenProp<any, import("react-navigation").NavigationParams>;
-            onBackToTop?: (() => void) | undefined;
-        }>, nextState: Readonly<{
-            error: any;
-            refreshTag: number;
-        }>, nextContext: any): void;
+        componentWillReceiveProps?(nextProps: Readonly<Props>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<Props>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): void;
     };
-    contextType?: React.Context<any> | undefined;
+    contextType?: React.Context<any>;
 };
 export {};

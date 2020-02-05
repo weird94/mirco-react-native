@@ -11,4 +11,5 @@ var Container = createContainer_1.createContainer({
     ErrorTips: ErrorTips_1.default,
     trackRenderError: console.warn
 });
+console.log('a');
 exports.default = Container;

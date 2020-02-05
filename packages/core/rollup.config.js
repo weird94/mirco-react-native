@@ -1,6 +1,5 @@
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
 
 const outputs = [
   {
@@ -20,7 +19,6 @@ export default outputs.map(output => ({
     typescript(),
     babel({
       exclude: 'node_modules/**' // 只编译我们的源代码
-    }),
-    terser()
+    })
   ]
 }));
