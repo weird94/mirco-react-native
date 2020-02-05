@@ -2,11 +2,7 @@ import React from 'react';
 import * as ReactNative from 'react-native';
 import ReactNavigation from 'react-navigation';
 
-/**
- * handle the webpack external module
- * @param {string} name module name
- */
-function require(name) {
+function _require(name: string) {
   if (name == 'REACT') {
     return React;
   } else if (name == 'REACT_NATIVE') {
@@ -18,19 +14,14 @@ function require(name) {
   }
 }
 
-/**
- * 加载远端 commonjs 规范的 ReactComponent
- * @param {string} url
- * @param {function} fetch 符合 w3c 规范的 fetch
- */
-export default function loadRemoteComponent(url, fetch) {
-  return fetch(url)
+export default function loadRemoteComponent(url: string, _fetch = fetch) {
+  return _fetch(url)
     .then(res => res.text())
     .then(body => {
       // webpack commonjs 规范模块
-      const exports = {};
+      const exports: any = {};
       const createComponent = new Function('exports', 'require', body);
-      createComponent(exports, require);
+      createComponent(exports, _require);
       return exports.__esModule ? exports.default : exports;
     });
 }
