@@ -117,8 +117,9 @@ function createContainer(_a) {
             return _this;
         }
         RemoteComponentContainer.prototype.buildComponent = function () {
-            var url = this.props.navigation.getParam('url');
+            var url = this.props.navigation.getParam('url') || this.props.screenProps.url;
             var RemoteComponent = React.lazy(function () { return loadRemoteComponent(url, injectFetch || fetch); });
+            this.RemoteComponent = RemoteComponent;
         };
         RemoteComponentContainer.prototype.addFocusEvent = function () {
             var navigation = this.props.navigation;
@@ -162,7 +163,6 @@ var Container = createContainer({
     ErrorTips: ErrorTips,
     trackRenderError: console.warn
 });
-console.log('a');
 
 var CONTAINER = '$$dynamic_rn_container';
 

@@ -75,8 +75,9 @@ function createContainer(_a) {
             return _this;
         }
         RemoteComponentContainer.prototype.buildComponent = function () {
-            var url = this.props.navigation.getParam('url');
+            var url = this.props.navigation.getParam('url') || this.props.screenProps.url;
             var RemoteComponent = react_1.default.lazy(function () { return loadRemoteComponent_1.default(url, injectFetch || fetch); });
+            this.RemoteComponent = RemoteComponent;
         };
         RemoteComponentContainer.prototype.addFocusEvent = function () {
             var navigation = this.props.navigation;

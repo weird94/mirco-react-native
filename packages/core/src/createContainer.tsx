@@ -11,7 +11,11 @@ type ContainerOptions = {
   injectFetch?: typeof fetch;
 };
 
-type Props = { navigation: NavigationScreenProp<any>; onBackToTop?: () => void };
+type Props = {
+  navigation: NavigationScreenProp<any>;
+  onBackToTop?: () => void;
+  screenProps: { url: string; initalProps: any };
+};
 
 type State = { error: any; refreshTag: number };
 
@@ -45,8 +49,9 @@ export function createContainer({
     }
 
     buildComponent() {
-      const url = this.props.navigation.getParam('url');
+      const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
       const RemoteComponent = React.lazy(() => loadRemoteComponent(url, injectFetch || fetch));
+      this.RemoteComponent = RemoteComponent;
     }
 
     handleRetry = () => {

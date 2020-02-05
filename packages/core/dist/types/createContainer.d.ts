@@ -11,6 +11,10 @@ declare type ContainerOptions = {
 declare type Props = {
     navigation: NavigationScreenProp<any>;
     onBackToTop?: () => void;
+    screenProps: {
+        url: string;
+        initalProps: any;
+    };
 };
 declare type State = {
     error: any;

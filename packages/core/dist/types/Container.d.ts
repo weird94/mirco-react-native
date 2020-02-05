@@ -25,6 +25,10 @@ declare const Container: {
         }>, props: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>) => {
             error: any;
             refreshTag: number;
@@ -39,6 +43,10 @@ declare const Container: {
         readonly props: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }> & Readonly<{
             children?: import("react").ReactNode;
         }>;
@@ -52,6 +60,10 @@ declare const Container: {
         shouldComponentUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;
@@ -59,6 +71,10 @@ declare const Container: {
         getSnapshotBeforeUpdate?(prevProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, prevState: Readonly<{
             error: any;
             refreshTag: number;
@@ -66,6 +82,10 @@ declare const Container: {
         componentDidUpdate?(prevProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, prevState: Readonly<{
             error: any;
             refreshTag: number;
@@ -75,14 +95,26 @@ declare const Container: {
         componentWillReceiveProps?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, nextContext: any): void;
         UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, nextContext: any): void;
         componentWillUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;
@@ -90,6 +122,10 @@ declare const Container: {
         UNSAFE_componentWillUpdate?(nextProps: Readonly<{
             navigation: import("react-navigation").NavigationScreenProp<any, import("react-navigation").NavigationParams>;
             onBackToTop?: () => void;
+            screenProps: {
+                url: string;
+                initalProps: any;
+            };
         }>, nextState: Readonly<{
             error: any;
             refreshTag: number;

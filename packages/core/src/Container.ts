@@ -8,5 +8,4 @@ const Container = createContainer({
   trackRenderError: console.warn
 });
 
-console.log('a');
 export default Container;
