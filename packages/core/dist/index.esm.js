@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import * as ReactNative from 'react-native';
-import { View } from 'react-native';
+import { View, Text, NativeModules } from 'react-native';
 import ReactNavigation from 'react-navigation';
 
 function _require(name) {
@@ -35,7 +35,8 @@ var Loading = function () {
 };
 
 var ErrorTips = function () {
-    return React.createElement(View, null);
+    return React.createElement(View, null,
+        React.createElement(Text, null));
 };
 
 /*! *****************************************************************************
@@ -132,10 +133,13 @@ function createContainer(_a) {
             }
         };
         RemoteComponentContainer.prototype.handleFocus = function () {
-            var onBackToTop = this.props.onBackToTop;
+            var _a = this.props, onBackToTop = _a.onBackToTop, onLeaveTop = _a.onLeaveTop;
             var stackDepth = this.getStackDepth();
             if (stackDepth === 1) {
                 typeof onBackToTop === 'function' && onBackToTop();
+            }
+            else {
+                typeof onBackToTop === 'function' && onLeaveTop();
             }
         };
         RemoteComponentContainer.prototype.componentDidCatch = function (error) {
@@ -164,6 +168,18 @@ var Container = createContainer({
     trackRenderError: console.warn
 });
 
+var GCTRNRouter = NativeModules.GCTRNRouter;
+function openDynamicRNPage(url, extProps) {
+    GCTRNRouter.openView({
+        path: 'common/rn/DynamicRN',
+        params: {
+            routerName: CONTAINER,
+            query: __assign(__assign({}, extProps), { url: url })
+        },
+        target: 1
+    });
+}
+
 var CONTAINER = '$$dynamic_rn_container';
 
-export { CONTAINER, Container as RemoteComponentContainer, createContainer, loadRemoteComponent };
+export { CONTAINER, Container as RemoteComponentContainer, createContainer, loadRemoteComponent, openDynamicRNPage };

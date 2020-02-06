@@ -41,7 +41,8 @@ var Loading = function () {
 };
 
 var ErrorTips = function () {
-    return React__default.createElement(ReactNative.View, null);
+    return React__default.createElement(ReactNative.View, null,
+        React__default.createElement(ReactNative.Text, null));
 };
 
 /*! *****************************************************************************
@@ -138,10 +139,13 @@ function createContainer(_a) {
             }
         };
         RemoteComponentContainer.prototype.handleFocus = function () {
-            var onBackToTop = this.props.onBackToTop;
+            var _a = this.props, onBackToTop = _a.onBackToTop, onLeaveTop = _a.onLeaveTop;
             var stackDepth = this.getStackDepth();
             if (stackDepth === 1) {
                 typeof onBackToTop === 'function' && onBackToTop();
+            }
+            else {
+                typeof onBackToTop === 'function' && onLeaveTop();
             }
         };
         RemoteComponentContainer.prototype.componentDidCatch = function (error) {
@@ -170,9 +174,22 @@ var Container = createContainer({
     trackRenderError: console.warn
 });
 
+var GCTRNRouter = ReactNative.NativeModules.GCTRNRouter;
+function openDynamicRNPage(url, extProps) {
+    GCTRNRouter.openView({
+        path: 'common/rn/DynamicRN',
+        params: {
+            routerName: CONTAINER,
+            query: __assign(__assign({}, extProps), { url: url })
+        },
+        target: 1
+    });
+}
+
 var CONTAINER = '$$dynamic_rn_container';
 
 exports.CONTAINER = CONTAINER;
 exports.RemoteComponentContainer = Container;
 exports.createContainer = createContainer;
 exports.loadRemoteComponent = loadRemoteComponent;
+exports.openDynamicRNPage = openDynamicRNPage;

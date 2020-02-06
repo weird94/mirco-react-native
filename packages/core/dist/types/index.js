@@ -7,3 +7,5 @@ exports.RemoteComponentContainer = Container_1.default;
 var createContainer_1 = require("./createContainer");
 exports.createContainer = createContainer_1.createContainer;
 exports.CONTAINER = '$$dynamic_rn_container';
+var openDynamicRNPage_1 = require("./openDynamicRNPage");
+exports.openDynamicRNPage = openDynamicRNPage_1.default;

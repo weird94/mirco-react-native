@@ -90,10 +90,13 @@ function createContainer(_a) {
             }
         };
         RemoteComponentContainer.prototype.handleFocus = function () {
-            var onBackToTop = this.props.onBackToTop;
+            var _a = this.props, onBackToTop = _a.onBackToTop, onLeaveTop = _a.onLeaveTop;
             var stackDepth = this.getStackDepth();
             if (stackDepth === 1) {
                 typeof onBackToTop === 'function' && onBackToTop();
+            }
+            else {
+                typeof onBackToTop === 'function' && onLeaveTop();
             }
         };
         RemoteComponentContainer.prototype.componentDidCatch = function (error) {

@@ -14,6 +14,7 @@ type ContainerOptions = {
 type Props = {
   navigation: NavigationScreenProp<any>;
   onBackToTop?: () => void;
+  onLeaveTop?: () => void;
   screenProps: { url: string; initalProps: any };
 };
 
@@ -34,8 +35,9 @@ export function createContainer({
   }
 
   return class RemoteComponentContainer extends React.Component<Props, State> {
-    RemoteComponent!: React.LazyExoticComponent<React.ComponentType<any>>;
+    RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
     focusEvent: NavigationEventSubscription | null;
+
     constructor(props: any) {
       super(props);
 
@@ -85,10 +87,12 @@ export function createContainer({
     };
 
     handleFocus() {
-      const { onBackToTop } = this.props;
+      const { onBackToTop, onLeaveTop } = this.props;
       const stackDepth = this.getStackDepth();
       if (stackDepth === 1) {
         typeof onBackToTop === 'function' && onBackToTop();
+      } else {
+        typeof onBackToTop === 'function' && onLeaveTop();
       }
     }
 

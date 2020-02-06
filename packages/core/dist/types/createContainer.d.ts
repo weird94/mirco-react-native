@@ -11,6 +11,7 @@ declare type ContainerOptions = {
 declare type Props = {
     navigation: NavigationScreenProp<any>;
     onBackToTop?: () => void;
+    onLeaveTop?: () => void;
     screenProps: {
         url: string;
         initalProps: any;
