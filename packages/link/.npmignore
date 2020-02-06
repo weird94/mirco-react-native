@@ -2,3 +2,4 @@ src/
 rollup.config.js
 node_modules/
 *.lock
+dist/types/*.js
