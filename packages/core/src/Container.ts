@@ -5,7 +5,7 @@ import { createContainer } from './createContainer';
 const Container = createContainer({
   Loading,
   ErrorTips,
-  trackRenderError: console.warn
+  trackRenderError: (_, errorInfo) => console.error(errorInfo)
 });
 
 export default Container;

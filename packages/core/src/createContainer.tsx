@@ -4,9 +4,11 @@ import { NavigationScreenProp } from 'react-navigation';
 
 const noop = () => {};
 
+export type ErrorTipsProps = { onRetry?: () => void };
+
 type ContainerOptions = {
   Loading: React.ComponentType;
-  ErrorTips: React.ComponentType<{ onRetry?: () => void }>;
+  ErrorTips: React.ComponentType<ErrorTipsProps>;
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
 };
