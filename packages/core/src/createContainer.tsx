@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, ErrorInfo } from 'react';
 import loadRemoteComponent from './loadRemoteComponent';
 import { NavigationScreenProp, NavigationEventSubscription } from 'react-navigation';
 
@@ -7,14 +7,12 @@ const noop = () => {};
 type ContainerOptions = {
   Loading: React.ComponentType;
   ErrorTips: React.ComponentType<{ onRetry?: () => void }>;
-  trackRenderError?: (error: any) => void;
+  trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
 };
 
 type Props = {
   navigation: NavigationScreenProp<any>;
-  onBackToTop?: () => void;
-  onLeaveTop?: () => void;
   screenProps: { url: string; initalProps: any };
 };
 
@@ -65,48 +63,9 @@ export function createContainer({
       this.setState({ refreshTag: Date.now() });
     };
 
-    addFocusEvent() {
-      const navigation = this.props.navigation;
-      this.focusEvent = navigation.addListener('didFocus', this.handleFocus);
-    }
-
-    removeFocusEvent() {
-      if (this.focusEvent) {
-        this.focusEvent.remove();
-        this.focusEvent = null;
-      }
-    }
-
-    getStackDepth = () => {
-      let parentState = this.props.navigation.dangerouslyGetParent()?.state;
-      if (parentState && parentState.routes) {
-        return parentState.routes.length;
-      } else {
-        return 1;
-      }
-    };
-
-    handleFocus() {
-      const { onBackToTop, onLeaveTop } = this.props;
-      const stackDepth = this.getStackDepth();
-      if (stackDepth === 1) {
-        typeof onBackToTop === 'function' && onBackToTop();
-      } else {
-        typeof onBackToTop === 'function' && onLeaveTop();
-      }
-    }
-
-    componentDidCatch(error: any) {
-      trackRenderError(error);
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+      trackRenderError(error, errorInfo);
       this.setState({ error: true });
-    }
-
-    componentDidMount() {
-      this.addFocusEvent();
-    }
-
-    componentWillUnmount() {
-      this.removeFocusEvent();
     }
 
     render() {
