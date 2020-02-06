@@ -905,15 +905,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crgt/dynamic-rn@^1.0.1":
-  version "1.0.1"
-  resolved "http://npm.crgt.xyz/@crgt%2fdynamic-rn/-/dynamic-rn-1.0.1.tgz#522d721df75888f9392cabf6c1b1141cd9ba3596"
-  integrity sha512-0aAUIOD2bhIpcBlimeH+VVlJXsw9QGU/Y1TseHDelgjrl2e/5ObaA3AV4g/ZlkUXBMEmOljdD3hKgTdUePyV1w==
-  dependencies:
-    react "^16.12.0"
-    react-native "^0.61.5"
-    react-navigation "^4.0.10"
-    react-navigation-stack "^2.0.15"
+"@crgt/dynamic-rn@^1.0.15":
+  version "1.0.15"
+  resolved "http://npm.crgt.xyz/@crgt%2fdynamic-rn/-/dynamic-rn-1.0.15.tgz#50aaccfb896bf37c170e1151585d2308c6eb1937"
+  integrity sha512-OYJPsD38bsDdQug6vKF5zIxKnEdS4wrSjfMud7eVwj+Xs+v5DQcGQGlekBVSmVgVh2gxsHlWEXFRKmWKJidKvw==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -1081,7 +1076,7 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
-"@react-navigation/core@^3.5.2":
+"@react-navigation/core@~3.5.1":
   version "3.5.2"
   resolved "http://npm.crgt.xyz/@react-navigation%2fcore/-/core-3.5.2.tgz#3a3d147b8419e5839e0f2ad4dea086bd2d307fe3"
   integrity sha1-Oj0Ue4QZ5YOeDyrU3qCGvS0wf+M=
@@ -1091,13 +1086,13 @@
     query-string "^6.4.2"
     react-is "^16.8.6"
 
-"@react-navigation/native@^3.6.3":
-  version "3.6.3"
-  resolved "http://npm.crgt.xyz/@react-navigation%2fnative/-/native-3.6.3.tgz#50b4519ebd001eaf2f07cb1ef531e7290ebd06d2"
-  integrity sha1-ULRRnr0AHq8vB8se9THnKQ69BtI=
+"@react-navigation/native@~3.6.2":
+  version "3.6.5"
+  resolved "http://npm.crgt.xyz/@react-navigation%2fnative/-/native-3.6.5.tgz#97b0b9a48f059a0704e3527f40fb034720ef363d"
+  integrity sha1-l7C5pI8FmgcE41J/QPsDRyDvNj0=
   dependencies:
     hoist-non-react-statics "^3.3.2"
-    react-native-safe-area-view "^0.14.1"
+    react-native-safe-area-view "^0.14.8"
 
 "@types/estree@*":
   version "0.0.42"
@@ -1128,6 +1123,26 @@
   version "13.7.0"
   resolved "http://npm.crgt.xyz/@types%2fnode/-/node-13.7.0.tgz#b417deda18cf8400f278733499ad5547ed1abec4"
   integrity sha1-tBfe2hjPhADyeHM0ma1VR+0avsQ=
+
+"@types/prop-types@*":
+  version "15.7.3"
+  resolved "http://npm.crgt.xyz/@types%2fprop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  integrity sha1-KrDV2i5YFflLC51LldHl8kOrLKc=
+
+"@types/react-native@^0.61.10":
+  version "0.61.10"
+  resolved "http://npm.crgt.xyz/@types%2freact-native/-/react-native-0.61.10.tgz#d010b9093322bc781151638f74124f58fc87cc90"
+  integrity sha1-0BC5CTMivHgRUWOPdBJPWPyHzJA=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.9.19":
+  version "16.9.19"
+  resolved "http://npm.crgt.xyz/@types%2freact/-/react-16.9.19.tgz#c842aa83ea490007d29938146ff2e4d9e4360c40"
+  integrity sha1-yEKqg+pJAAfSmTgUb/Lk2eQ2DEA=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2158,7 +2173,7 @@ collection-visit@^1.0.0:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
 
-color-convert@^1.9.0, color-convert@^1.9.1:
+color-convert@^1.9.0:
   version "1.9.3"
   resolved "http://npm.crgt.xyz/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
   integrity sha1-u3GFBpDh8TZWfeYp0tVHHe2kweg=
@@ -2170,31 +2185,10 @@ color-name@1.1.3:
   resolved "http://npm.crgt.xyz/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
 
-color-name@^1.0.0:
-  version "1.1.4"
-  resolved "http://npm.crgt.xyz/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
-  integrity sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=
-
-color-string@^1.5.2:
-  version "1.5.3"
-  resolved "http://npm.crgt.xyz/color-string/-/color-string-1.5.3.tgz#c9bbc5f01b58b5492f3d6857459cb6590ce204cc"
-  integrity sha1-ybvF8BtYtUkvPWhXRZy2WQziBMw=
-  dependencies:
-    color-name "^1.0.0"
-    simple-swizzle "^0.2.2"
-
 color-support@^1.1.3:
   version "1.1.3"
   resolved "http://npm.crgt.xyz/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
   integrity sha1-k4NDeaHMmgxh+C9S8NBDIiUb1aI=
-
-color@^3.1.2:
-  version "3.1.2"
-  resolved "http://npm.crgt.xyz/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
-  integrity sha1-aBSOf4XUGtdknF+oyBBvCY0inhA=
-  dependencies:
-    color-convert "^1.9.1"
-    color-string "^1.5.2"
 
 colorette@^1.0.7:
   version "1.1.0"
@@ -2349,6 +2343,11 @@ cross-spawn@^6.0.0:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+csstype@^2.2.0:
+  version "2.6.8"
+  resolved "http://npm.crgt.xyz/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
+  integrity sha1-D7b8JBf/0oFqQYyTNtp01/B9tDE=
 
 dayjs@^1.8.15:
   version "1.8.19"
@@ -2922,7 +2921,7 @@ hermes-engine@^0.2.1:
   resolved "http://npm.crgt.xyz/hermes-engine/-/hermes-engine-0.2.1.tgz#25c0f1ff852512a92cb5c5cc47cf967e1e722ea2"
   integrity sha1-JcDx/4UlEqkstcXMR8+Wfh5yLqI=
 
-hoist-non-react-statics@^2.3.1:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "http://npm.crgt.xyz/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha1-xZA89AnA39kI84jmGdhrnBF0y0c=
@@ -3043,11 +3042,6 @@ is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "http://npm.crgt.xyz/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
   integrity sha1-d8mYQFJ6qOyxqLppe4BkWnqSap0=
-
-is-arrayish@^0.3.1:
-  version "0.3.2"
-  resolved "http://npm.crgt.xyz/is-arrayish/-/is-arrayish-0.3.2.tgz#4574a2ae56f7ab206896fb431eaeed066fdf8f03"
-  integrity sha1-RXSirlb3qyBolvtDHq7tBm/fjwM=
 
 is-binary-path@^1.0.0:
   version "1.0.1"
@@ -4366,7 +4360,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "http://npm.crgt.xyz/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -4415,19 +4409,21 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "http://npm.crgt.xyz/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha1-LMD+D7p0LZf9UnxCoTvsTusGJBw=
 
-react-native-iphone-x-helper@^1.2.1:
-  version "1.2.1"
-  resolved "http://npm.crgt.xyz/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
-  integrity sha1-ZF4v+7tJ6AhEu0y740oSb9oeZ3I=
-
-react-native-safe-area-view@^0.14.1:
+react-native-safe-area-view@^0.14.8:
   version "0.14.8"
   resolved "http://npm.crgt.xyz/react-native-safe-area-view/-/react-native-safe-area-view-0.14.8.tgz#ef33c46ff8164ae77acad48c3039ec9c34873e5b"
   integrity sha1-7zPEb/gWSud6ytSMMDnsnDSHPls=
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-react-native@^0.61.5:
+react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
+  version "1.4.1"
+  resolved "http://npm.crgt.xyz/react-native-tab-view/-/react-native-tab-view-1.4.1.tgz#f113cd87485808f0c991abec937f70fa380478b9"
+  integrity sha1-8RPNh0hYCPDJkavsk39w+jgEeLk=
+  dependencies:
+    prop-types "^15.6.1"
+
+react-native@^0.x:
   version "0.61.5"
   resolved "http://npm.crgt.xyz/react-native/-/react-native-0.61.5.tgz#6e21acb56cbd75a3baeb1f70201a66f42600bba8"
   integrity sha1-biGstWy9daO66x9wIBpm9CYAu6g=
@@ -4462,28 +4458,46 @@ react-native@^0.61.5:
     stacktrace-parser "^0.1.3"
     whatwg-fetch "^3.0.0"
 
-react-navigation-stack@^2.0.15:
-  version "2.1.0"
-  resolved "http://npm.crgt.xyz/react-navigation-stack/-/react-navigation-stack-2.1.0.tgz#3cf2d9ce64d3344db2b1def8ba226ca6a68783d5"
-  integrity sha1-PPLZzmTTNE2ysd74uiJspqaHg9U=
+react-navigation-drawer@~1.4.0:
+  version "1.4.0"
+  resolved "http://npm.crgt.xyz/react-navigation-drawer/-/react-navigation-drawer-1.4.0.tgz#70f3dd83e3da9cd4ea6e2739526502c823d466b9"
+  integrity sha1-cPPdg+PanNTqbic5UmUCyCPUZrk=
   dependencies:
-    color "^3.1.2"
-    react-native-iphone-x-helper "^1.2.1"
+    react-native-tab-view "^1.2.0"
 
-react-navigation@^4.0.10:
-  version "4.1.0"
-  resolved "http://npm.crgt.xyz/react-navigation/-/react-navigation-4.1.0.tgz#552a42b95d4bf50b41b14e356fcb0ca7618fd5fa"
-  integrity sha1-VSpCuV1L9QtBsU41b8sMp2GP1fo=
+react-navigation-stack@1.5.3:
+  version "1.5.3"
+  resolved "http://npm.crgt.xyz/react-navigation-stack/-/react-navigation-stack-1.5.3.tgz#cdc9f5a6dbdc55509a15f60d765722573dec1997"
+  integrity sha1-zcn1ptvcVVCaFfYNdlciVz3sGZc=
   dependencies:
-    "@react-navigation/core" "^3.5.2"
-    "@react-navigation/native" "^3.6.3"
+    prop-types "^15.7.2"
+
+react-navigation-tabs@~1.2.0:
+  version "1.2.0"
+  resolved "http://npm.crgt.xyz/react-navigation-tabs/-/react-navigation-tabs-1.2.0.tgz#602c147029bb4f1c569b26479ddba534fe3ebb19"
+  integrity sha1-YCwUcCm7TxxWmyZHndulNP4+uxk=
+  dependencies:
+    hoist-non-react-statics "^2.5.0"
+    prop-types "^15.6.1"
+    react-native-tab-view "^1.4.1"
+
+react-navigation@^3.x:
+  version "3.13.0"
+  resolved "http://npm.crgt.xyz/react-navigation/-/react-navigation-3.13.0.tgz#e802bb5174c1ec8b727c69f8e4409ff1351a5250"
+  integrity sha1-6AK7UXTB7ItyfGn45ECf8TUaUlA=
+  dependencies:
+    "@react-navigation/core" "~3.5.1"
+    "@react-navigation/native" "~3.6.2"
+    react-navigation-drawer "~1.4.0"
+    react-navigation-stack "1.5.3"
+    react-navigation-tabs "~1.2.0"
 
 react-refresh@^0.4.0:
   version "0.4.2"
   resolved "http://npm.crgt.xyz/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
   integrity sha1-VKJ3psqqwoA9iPHW8Twdz72B4zQ=
 
-react@^16.12.0:
+react@^16.x:
   version "16.12.0"
   resolved "http://npm.crgt.xyz/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha1-DAqcahQkKeNhSDTVp3jhiqeKC4M=
@@ -4708,7 +4722,15 @@ rollup-plugin-terser@^5.2.0:
     serialize-javascript "^2.1.2"
     terser "^4.6.2"
 
-rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
+rollup-plugin-typescript@^1.0.1:
+  version "1.0.1"
+  resolved "http://npm.crgt.xyz/rollup-plugin-typescript/-/rollup-plugin-typescript-1.0.1.tgz#86565033b714c3d1f3aba510aad3dc519f7091e9"
+  integrity sha1-hlZQM7cUw9Hzq6UQqtPcUZ9wkek=
+  dependencies:
+    resolve "^1.10.0"
+    rollup-pluginutils "^2.5.0"
+
+rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "http://npm.crgt.xyz/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha1-cvKvB0i1kjZNvTOJ5gDlqURKNR4=
@@ -4924,13 +4946,6 @@ simple-plist@^1.0.0:
     bplist-creator "0.0.8"
     bplist-parser "0.2.0"
     plist "^3.0.1"
-
-simple-swizzle@^0.2.2:
-  version "0.2.2"
-  resolved "http://npm.crgt.xyz/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
-  integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
-  dependencies:
-    is-arrayish "^0.3.1"
 
 slash@^2.0.0:
   version "2.0.0"
@@ -5274,6 +5289,11 @@ toidentifier@1.0.0:
   resolved "http://npm.crgt.xyz/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha1-fhvjRw8ed5SLxD2Uo8j013UrpVM=
 
+tslib@^1.10.0:
+  version "1.10.0"
+  resolved "http://npm.crgt.xyz/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha1-w8GflZc/sKYpc/sJ2Q2WHuQ+XIo=
+
 type-fest@^0.7.1:
   version "0.7.1"
   resolved "http://npm.crgt.xyz/type-fest/-/type-fest-0.7.1.tgz#8dda65feaf03ed78f0a3f9678f1869147f7c5c48"
@@ -5283,6 +5303,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "http://npm.crgt.xyz/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@^3.7.5:
+  version "3.7.5"
+  resolved "http://npm.crgt.xyz/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
+  integrity sha1-BpLiH2X9QQi5MwI4qsEd0uF3oa4=
 
 ua-parser-js@^0.7.18:
   version "0.7.21"

@@ -2,9 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build-core": "cd packages/core && rollup -c && cd ../../",
-    "build-link": "cd packages/link && rollup -c && cd ../../",
-    "compile-core": "cd packages/core && tsc & cd ../../",
+    "build-core": "lerna run --scope @crgt/dynamic-rn build",
+    "build-link": "lerna run --scope @crgt/gtrn-link build",
+    "compile-core": "lerna run --scope @crgt/dynamic-rn tsc",
     "build": "npm run build-core && npm run build-link && npm run compile-core"
   },
   "devDependencies": {

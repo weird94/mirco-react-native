@@ -1,24 +1,24 @@
-import babel from "rollup-plugin-babel";
-import { terser } from "rollup-plugin-terser";
+import babel from 'rollup-plugin-babel';
+import typescript from 'rollup-plugin-typescript';
 
 const outputs = [
   {
-    file: "dist/index.cjs.js",
-    format: "cjs"
+    file: 'dist/index.cjs.js',
+    format: 'cjs'
   },
   {
-    file: "dist/index.esm.js",
-    format: "esm"
+    file: 'dist/index.esm.js',
+    format: 'esm'
   }
 ];
 
 export default outputs.map(output => ({
-  input: "index.js",
+  input: 'src/index.tsx',
   output: output,
   plugins: [
+    typescript(),
     babel({
-      exclude: "node_modules/**" // 只编译我们的源代码
-    }),
-    terser()
+      exclude: 'node_modules/**' // 只编译我们的源代码
+    })
   ]
 }));

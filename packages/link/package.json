@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,17 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@crgt/dynamic-rn": "^1.0.15",
+    "@types/react": "^16.9.19",
+    "@types/react-native": "^0.61.10",
     "babel-preset-latest": "^6.24.1",
     "react": "^16.x",
     "react-native": "^0.x",
     "react-navigation": "^3.x",
     "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-terser": "^5.2.0"
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
   }
 }

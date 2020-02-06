@@ -6,7 +6,9 @@
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rollup -c",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
