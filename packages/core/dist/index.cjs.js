@@ -41,7 +41,7 @@ var Loading = function () {
 };
 
 var ErrorTips = function () {
-    return React__default.createElement(ReactNative.View, null,
+    return React__default.createElement(ReactNative.View, { style: {} },
         React__default.createElement(ReactNative.Text, null));
 };
 

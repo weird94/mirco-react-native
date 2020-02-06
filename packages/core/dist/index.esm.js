@@ -35,7 +35,7 @@ var Loading = function () {
 };
 
 var ErrorTips = function () {
-    return React.createElement(View, null,
+    return React.createElement(View, { style: {} },
         React.createElement(Text, null));
 };
 

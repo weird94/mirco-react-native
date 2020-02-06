@@ -15,8 +15,8 @@
   "author": "wei.zhangw01",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.12.0",
-    "react-native": "0.59.5",
+    "react": "^16.x",
+    "react-native": "^0.x",
     "react-navigation": "^3.x"
   },
   "devDependencies": {
