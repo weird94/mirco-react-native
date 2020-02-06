@@ -1,6 +1,6 @@
 import React, { Suspense, ErrorInfo } from 'react';
 import loadRemoteComponent from './loadRemoteComponent';
-import { NavigationScreenProp, NavigationEventSubscription } from 'react-navigation';
+import { NavigationScreenProp } from 'react-navigation';
 
 const noop = () => {};
 
@@ -34,7 +34,6 @@ export function createContainer({
 
   return class RemoteComponentContainer extends React.Component<Props, State> {
     RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
-    focusEvent: NavigationEventSubscription | null;
 
     constructor(props: any) {
       super(props);
@@ -44,7 +43,6 @@ export function createContainer({
         refreshTag: 0
       };
 
-      this.focusEvent = null;
       this.buildComponent();
     }
 
