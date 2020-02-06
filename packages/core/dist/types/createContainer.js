@@ -56,21 +56,10 @@ function createContainer(_a) {
                 _this.buildComponent();
                 _this.setState({ refreshTag: Date.now() });
             };
-            _this.getStackDepth = function () {
-                var _a;
-                var parentState = (_a = _this.props.navigation.dangerouslyGetParent()) === null || _a === void 0 ? void 0 : _a.state;
-                if (parentState && parentState.routes) {
-                    return parentState.routes.length;
-                }
-                else {
-                    return 1;
-                }
-            };
             _this.state = {
                 error: false,
                 refreshTag: 0
             };
-            _this.focusEvent = null;
             _this.buildComponent();
             return _this;
         }
@@ -79,35 +68,9 @@ function createContainer(_a) {
             var RemoteComponent = react_1.default.lazy(function () { return loadRemoteComponent_1.default(url, injectFetch || fetch); });
             this.RemoteComponent = RemoteComponent;
         };
-        RemoteComponentContainer.prototype.addFocusEvent = function () {
-            var navigation = this.props.navigation;
-            this.focusEvent = navigation.addListener('didFocus', this.handleFocus);
-        };
-        RemoteComponentContainer.prototype.removeFocusEvent = function () {
-            if (this.focusEvent) {
-                this.focusEvent.remove();
-                this.focusEvent = null;
-            }
-        };
-        RemoteComponentContainer.prototype.handleFocus = function () {
-            var _a = this.props, onBackToTop = _a.onBackToTop, onLeaveTop = _a.onLeaveTop;
-            var stackDepth = this.getStackDepth();
-            if (stackDepth === 1) {
-                typeof onBackToTop === 'function' && onBackToTop();
-            }
-            else {
-                typeof onBackToTop === 'function' && onLeaveTop();
-            }
-        };
-        RemoteComponentContainer.prototype.componentDidCatch = function (error) {
-            trackRenderError(error);
+        RemoteComponentContainer.prototype.componentDidCatch = function (error, errorInfo) {
+            trackRenderError(error, errorInfo);
             this.setState({ error: true });
-        };
-        RemoteComponentContainer.prototype.componentDidMount = function () {
-            this.addFocusEvent();
-        };
-        RemoteComponentContainer.prototype.componentWillUnmount = function () {
-            this.removeFocusEvent();
         };
         RemoteComponentContainer.prototype.render = function () {
             var RemoteComponent = this.RemoteComponent;
