@@ -5,7 +5,8 @@
     "build-core": "lerna run --scope @crgt/dynamic-rn build",
     "build-link": "lerna run --scope @crgt/gtrn-link build",
     "compile-core": "lerna run --scope @crgt/dynamic-rn tsc",
-    "build": "npm run build-core && npm run build-link && npm run compile-core"
+    "compile-link": "lerna run --scope @crgt/gtrn-link tsc",
+    "build": "npm run build-core && npm run build-link && npm run compile-core && npm run compile-link"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

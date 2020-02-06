@@ -6,5 +6,4 @@ yarn-error.log
 packages/core/yarn.lock
 packages/core/dist/
 
-# packages/link/dist/
-# packages/link/dist/*
+packages/link/dist/
