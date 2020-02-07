@@ -23,6 +23,7 @@
 ### bundle 云端管理
 
 缓存策略 - 基于 react-native fetch 实现 http 缓存机制
+参考 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ
 
 1. 首次请求
 
