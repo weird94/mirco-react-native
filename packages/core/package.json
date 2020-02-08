@@ -8,7 +8,8 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "ii": "yarn"
   },
   "repository": {
     "type": "git",

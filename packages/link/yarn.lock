@@ -905,10 +905,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crgt/dynamic-rn@^1.0.15":
-  version "1.0.15"
-  resolved "http://npm.crgt.xyz/@crgt%2fdynamic-rn/-/dynamic-rn-1.0.15.tgz#50aaccfb896bf37c170e1151585d2308c6eb1937"
-  integrity sha512-OYJPsD38bsDdQug6vKF5zIxKnEdS4wrSjfMud7eVwj+Xs+v5DQcGQGlekBVSmVgVh2gxsHlWEXFRKmWKJidKvw==
+"@crgt/dynamic-rn@^1.0.16":
+  version "1.0.16"
+  resolved "http://npm.crgt.xyz/@crgt%2fdynamic-rn/-/dynamic-rn-1.0.16.tgz#8c94b41f184f3f5d784d770e1304165025ea33c7"
+  integrity sha512-I0syGjYylopsjxNPPmrDC9Rh5psWneY0Kyo64XvV1zQ1kGIdEM/DxXi+r0d+c0vAPW5ISHWuX0HGSIvvU4TRBQ==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
