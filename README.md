@@ -33,10 +33,10 @@
      - header ETag 中写入 js 代码对应的 md5
      - header 中设置缓存策略 cache-control (必须设置 must-revalidate)
 
-![A](https://segmentfault.com/img/bVbshDA?w=800&h=669)
-
 2. 二次请求
-   - fetch 中会自动带上 if
+   - fetch 中会自动带上 if-None-Match
    - 若命中缓存 则返回 304, 否则返回 200 并在 body 中返回 js，在 header 中返回新的 md5
+
+![缓存验证流程](./cahce.png)
 
 ### 客户端扫码预览 or test 模块输入链接
