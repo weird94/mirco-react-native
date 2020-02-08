@@ -20,7 +20,7 @@
 - 在生产配置的基础下，增加 watch 模式
 - command 输出二维码，提供客户端扫码预览 (可以二期)
 
-### bundle 云端管理
+### bundle 云端管理 - 需确认是否目前的 cdn 能够支持
 
 缓存策略 - 基于 react-native fetch 实现 http 缓存机制
 参考 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ
