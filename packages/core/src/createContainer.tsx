@@ -11,6 +11,7 @@ type ContainerOptions = {
   ErrorTips: React.ComponentType<ErrorTipsProps>;
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
+  injectRequire: (name: string) => any;
 };
 
 type Props = {
@@ -24,7 +25,8 @@ export function createContainer({
   Loading,
   ErrorTips,
   trackRenderError = noop,
-  injectFetch
+  injectFetch,
+  injectRequire
 }: ContainerOptions) {
   if (!Loading) {
     throw 'invailed options, prop `Loading` is required';
@@ -50,7 +52,9 @@ export function createContainer({
 
     buildComponent() {
       const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
-      const RemoteComponent = React.lazy(() => loadRemoteComponent(url, injectFetch || fetch));
+      const RemoteComponent = React.lazy(() =>
+        loadRemoteComponent(url, injectFetch || fetch, injectRequire)
+      );
       this.RemoteComponent = RemoteComponent;
     }
 
