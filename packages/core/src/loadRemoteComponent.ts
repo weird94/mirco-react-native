@@ -1,7 +1,7 @@
 export default function loadRemoteComponent(
   url: string,
   _fetch = fetch,
-  injectRequire: typeof require
+  injectRequire: (name: string) => any
 ) {
   return _fetch(url)
     .then(res => res.text())
