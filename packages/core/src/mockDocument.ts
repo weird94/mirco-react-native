@@ -27,7 +27,9 @@ export class ScriptElement {
 
   set src(str: string) {
     this._url = str;
-    this._fetch(str)
+    const realUrl = new Url(this.baseUrl, str).toString();
+    console.log('111realUrl', realUrl);
+    this._fetch(realUrl)
       .then(res => res.text())
       .then(code => {
         this.handleLoad(code);
@@ -39,7 +41,7 @@ export class ScriptElement {
     if (this.onload) {
       const newModule = new Function('window', code);
       newModule(mockWindow);
-      this.onload();
+      this.onload({ type: 'loaded', target: this });
     }
   }
 
@@ -58,7 +60,7 @@ export const createMockDocument = (_fetch: (url: string) => Promise<any>, url: s
       .split('/')
       .slice(0, -1)
       .join('/');
-    const baseUrl = `${objectUrl.protocol}://${objectUrl.hostname}${
+    const baseUrl = `${objectUrl.protocol}//${objectUrl.hostname}${
       objectUrl.port ? ':' + objectUrl.port : ''
     }${basePath}`;
     return new ScriptElement(_fetch, baseUrl);

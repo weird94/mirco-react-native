@@ -10,13 +10,9 @@
     "ii": "lerna run --scope @crgt/gtrn-link ii && lerna run --scope @crgt/dynamic-rn ii"
   },
   "devDependencies": {
-    "@types/url-parse": "^1.4.3",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.0",
     "lerna": "^3.20.2"
-  },
-  "dependencies": {
-    "url-parse": "^1.4.7"
   }
 }

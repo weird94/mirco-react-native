@@ -1144,6 +1144,16 @@
   resolved "http://npm.crgt.xyz/@types%2fstack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha1-CoUdO9lkmPolwzq3J47TvWXwbD4=
 
+"@types/urijs@^1.19.5":
+  version "1.19.5"
+  resolved "http://npm.crgt.xyz/@types%2furijs/-/urijs-1.19.5.tgz#f2083392f5859be59cbba0b1d463b922c8aef842"
+  integrity sha1-8ggzkvWFm+Wcu6Cx1GO5Isiu+EI=
+
+"@types/url-parse@^1.4.3":
+  version "1.4.3"
+  resolved "http://npm.crgt.xyz/@types%2furl-parse/-/url-parse-1.4.3.tgz#fba49d90f834951cb000a674efee3d6f20968329"
+  integrity sha1-+6SdkPg0lRywAKZ07+49byCWgyk=
+
 "@types/yargs-parser@*":
   version "15.0.0"
   resolved "http://npm.crgt.xyz/@types%2fyargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
@@ -4386,6 +4396,11 @@ query-string@^6.4.2:
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
 
+querystringify@^2.1.1:
+  version "2.1.1"
+  resolved "http://npm.crgt.xyz/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
+  integrity sha1-YOWl/WSn+L+k0qsu1v30yFutFU4=
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "http://npm.crgt.xyz/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -4655,6 +4670,11 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "http://npm.crgt.xyz/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
   integrity sha1-l/cXtp1IeE9fUmpsWqj/3aBVpNE=
+
+requires-port@^1.0.0:
+  version "1.0.0"
+  resolved "http://npm.crgt.xyz/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+  integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
 resolve-from@^3.0.0:
   version "3.0.0"
@@ -5383,10 +5403,23 @@ upath@^1.1.1:
   resolved "http://npm.crgt.xyz/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha1-j2bbzVWog6za5ECK+LA1pQRMGJQ=
 
+urijs@^1.19.2:
+  version "1.19.2"
+  resolved "http://npm.crgt.xyz/urijs/-/urijs-1.19.2.tgz#f9be09f00c4c5134b7cb3cf475c1dd394526265a"
+  integrity sha1-+b4J8AxMUTS3yzz0dcHdOUUmJlo=
+
 urix@^0.1.0:
   version "0.1.0"
   resolved "http://npm.crgt.xyz/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-parse@^1.4.7:
+  version "1.4.7"
+  resolved "http://npm.crgt.xyz/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
+  integrity sha1-qKg1NejACjFuQDpdtKwbm4U64ng=
+  dependencies:
+    querystringify "^2.1.1"
+    requires-port "^1.0.0"
 
 use@^3.1.0:
   version "3.1.1"
