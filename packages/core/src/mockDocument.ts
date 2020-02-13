@@ -1,13 +1,16 @@
 // 为了实现动态的 import 实现代码分割
+import Url from 'url-parse';
 
 export const mockWindow = {};
 
-class ScriptElement {
+export class ScriptElement {
   onload?: Function;
   onerror?: Function;
   _fetch: (url: string) => Promise<any>;
+  baseUrl: string;
 
-  constructor(fetchFunction?: (url: string) => Promise<any>) {
+  constructor(fetchFunction: (url: string) => Promise<any>, baseUrl: string) {
+    this.baseUrl = baseUrl;
     if (fetchFunction) {
       this._fetch = fetchFunction;
     } else {
@@ -15,12 +18,14 @@ class ScriptElement {
     }
   }
 
+  setAttribute() {}
+
   private _url = '';
-  get url() {
+  get src() {
     return this._url;
   }
 
-  set url(str: string) {
+  set src(str: string) {
     this._url = str;
     this._fetch(str)
       .then(res => res.text())
@@ -45,9 +50,18 @@ class ScriptElement {
   }
 }
 
-export const createMockDocument = (_fetch: (url: string) => Promise<any>) => ({
+export const createMockDocument = (_fetch: (url: string) => Promise<any>, url: string) => ({
   createElement(type: string) {
-    return new ScriptElement(_fetch);
+    const objectUrl = new Url(url);
+    const path = objectUrl.pathname;
+    const basePath = path
+      .split('/')
+      .slice(0, -1)
+      .join('/');
+    const baseUrl = `${objectUrl.protocol}://${objectUrl.hostname}${
+      objectUrl.port ? ':' + objectUrl.port : ''
+    }${basePath}`;
+    return new ScriptElement(_fetch, baseUrl);
   },
   body: {
     appendChild() {}

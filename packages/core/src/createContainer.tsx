@@ -37,10 +37,9 @@ export function createContainer({
     throw 'invailed options, prop `ErrorTips` is required';
   }
 
-  const mockDocument = createMockDocument(injectFetch);
-
   return class RemoteComponentContainer extends React.Component<Props, State> {
     RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
+    mockDocument: ReturnType<typeof createMockDocument>;
 
     constructor(props: any) {
       super(props);
@@ -55,8 +54,9 @@ export function createContainer({
 
     buildComponent() {
       const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
+      this.mockDocument = createMockDocument(injectFetch, url);
       const RemoteComponent = React.lazy(() =>
-        loadRemoteComponent(url, injectFetch || fetch, injectRequire, mockDocument)
+        loadRemoteComponent(url, injectFetch || fetch, injectRequire, this.mockDocument)
       );
       this.RemoteComponent = RemoteComponent;
     }
