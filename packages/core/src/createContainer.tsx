@@ -1,6 +1,7 @@
 import React, { Suspense, ErrorInfo } from 'react';
 import loadRemoteComponent from './loadRemoteComponent';
 import { NavigationScreenProp } from 'react-navigation';
+import { createMockDocument } from './mockDocument';
 
 const noop = () => {};
 
@@ -36,6 +37,8 @@ export function createContainer({
     throw 'invailed options, prop `ErrorTips` is required';
   }
 
+  const mockDocument = createMockDocument(injectFetch);
+
   return class RemoteComponentContainer extends React.Component<Props, State> {
     RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
 
@@ -53,7 +56,7 @@ export function createContainer({
     buildComponent() {
       const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
       const RemoteComponent = React.lazy(() =>
-        loadRemoteComponent(url, injectFetch || fetch, injectRequire)
+        loadRemoteComponent(url, injectFetch || fetch, injectRequire, mockDocument)
       );
       this.RemoteComponent = RemoteComponent;
     }
