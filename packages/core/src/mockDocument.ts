@@ -48,5 +48,11 @@ class ScriptElement {
 export const createMockDocument = (_fetch: (url: string) => Promise<any>) => ({
   createElement(type: string) {
     return new ScriptElement(_fetch);
+  },
+  body: {
+    appendChild() {}
+  },
+  head: {
+    appendChild() {}
   }
 });
