@@ -5,3 +5,4 @@ export const CONTAINER = '$$dynamic_rn_container';
 export { default as openDynamicRNPage } from './openDynamicRNPage';
 export { default as Loading } from './Loading';
 export { default as ErrorTips } from './ErrorTips';
+export const version = '1.1.0';
