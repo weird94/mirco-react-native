@@ -8,6 +8,7 @@ export class ScriptElement {
   onerror?: Function;
   _fetch: (url: string) => Promise<any>;
   baseUrl: string;
+  src: string = '';
 
   constructor(fetchFunction: (url: string) => Promise<any>, baseUrl: string) {
     this.baseUrl = baseUrl;
@@ -20,14 +21,8 @@ export class ScriptElement {
 
   setAttribute() {}
 
-  private _url = '';
-  get src() {
-    return this._url;
-  }
-
-  set src(str: string) {
-    this._url = str;
-    const realUrl = `${this.baseUrl}/${str}`;
+  excute() {
+    const realUrl = `${this.baseUrl}/${this.src}`;
     this._fetch(realUrl)
       .then(res => res.text())
       .then(code => {
@@ -53,21 +48,34 @@ export class ScriptElement {
 
 export const createMockDocument = (_fetch: (url: string) => Promise<any>, url: string) => ({
   createElement(type: string) {
+    if (type !== 'script') {
+      throw new Error('unsupport Element type `' + type + '`');
+    }
     const objectUrl = new Url(url);
-    const path = objectUrl.pathname;
+    const { pathname: path, protocol, hostname, port } = objectUrl;
     const basePath = path
       .split('/')
       .slice(0, -1)
       .join('/');
-    const baseUrl = `${objectUrl.protocol}//${objectUrl.hostname}${
-      objectUrl.port ? ':' + objectUrl.port : ''
-    }${basePath}`;
+    const baseUrl = `${protocol}//${hostname}${port ? ':' + port : ''}${basePath}`;
     return new ScriptElement(_fetch, baseUrl);
   },
   body: {
-    appendChild() {}
+    appendChild(element: ScriptElement) {
+      try {
+        element.excute();
+      } catch (error) {
+        console.log('excute error', error);
+      }
+    }
   },
   head: {
-    appendChild() {}
+    appendChild(element: ScriptElement) {
+      try {
+        element.excute();
+      } catch (error) {
+        console.log('excute error', error);
+      }
+    }
   }
 });
