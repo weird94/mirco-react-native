@@ -1,6 +1,17 @@
 import React from 'react';
-import { View, Text, ViewStyle, StyleProp, Button } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ViewStyle,
+  StyleProp,
+  Button,
+  ImageStyle,
+  TextStyle,
+  TouchableOpacity
+} from 'react-native';
 import { ErrorTipsProps } from './createContainer';
+import netError from './netError.icon';
 
 const containerStyle: StyleProp<ViewStyle> = {
   flex: 1,
@@ -8,11 +19,34 @@ const containerStyle: StyleProp<ViewStyle> = {
   justifyContent: 'center'
 };
 
+const iconStyle: StyleProp<ImageStyle> = {
+  width: 130,
+  height: 130,
+  marginBottom: 16
+};
+
+const labelStyle: StyleProp<TextStyle> = {
+  height: 22,
+  fontSize: 18,
+  color: '#323233',
+  marginBottom: 5
+};
+
+const tipsStyle: StyleProp<TextStyle> = {
+  fontSize: 12,
+  height: 16.5,
+
+  color: '#969799'
+};
+
 const ErrorTips = (props: ErrorTipsProps) => {
   return (
     <View style={containerStyle}>
-      <Text>render component error</Text>
-      <Button onPress={props.onRetry} title='重试' />
+      <Image source={{ uri: netError }} style={iconStyle} />
+      <Text style={labelStyle}>当前网络异常</Text>
+      <TouchableOpacity onPress={props.onRetry}>
+        <Text style={tipsStyle}>请点击重试</Text>
+      </TouchableOpacity>
     </View>
   );
 };

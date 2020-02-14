@@ -63,6 +63,7 @@ export function createContainer({
 
     handleRetry = () => {
       this.setState({ error: false });
+      this.handleRefresh();
     };
 
     handleRefresh = () => {
