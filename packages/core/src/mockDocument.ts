@@ -27,7 +27,7 @@ export class ScriptElement {
 
   set src(str: string) {
     this._url = str;
-    const realUrl = new Url(this.baseUrl, str).toString();
+    const realUrl = `${this.baseUrl}/${str}`;
     console.log('111realUrl', realUrl);
     this._fetch(realUrl)
       .then(res => res.text())
