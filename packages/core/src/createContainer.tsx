@@ -2,13 +2,14 @@ import React, { Suspense, ErrorInfo } from 'react';
 import loadRemoteComponent from './loadRemoteComponent';
 import { NavigationScreenProp } from 'react-navigation';
 import { createMockDocument } from './mockDocument';
+import Url from 'url-parse';
 
 const noop = () => {};
 
-export type ErrorTipsProps = { onRetry?: () => void };
+export type ErrorTipsProps = { onRetry?: () => void; navigation: any; title?: string };
 
 type ContainerOptions = {
-  Loading: React.ComponentType<{ navigation }>;
+  Loading: React.ComponentType;
   ErrorTips: React.ComponentType<ErrorTipsProps>;
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
@@ -40,6 +41,7 @@ export function createContainer({
   return class RemoteComponentContainer extends React.Component<Props, State> {
     RemoteComponent: React.LazyExoticComponent<React.ComponentType<any>>;
     mockDocument: ReturnType<typeof createMockDocument>;
+    urlObj: Url;
 
     constructor(props: any) {
       super(props);
@@ -54,6 +56,7 @@ export function createContainer({
 
     buildComponent() {
       const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
+      this.urlObj = new Url(url);
       this.mockDocument = createMockDocument(injectFetch, url);
       const RemoteComponent = React.lazy(() =>
         loadRemoteComponent(url, injectFetch || fetch, injectRequire, this.mockDocument)
@@ -81,9 +84,13 @@ export function createContainer({
       const { error, refreshTag } = this.state;
 
       return error ? (
-        <ErrorTips onRetry={this.handleRetry} />
+        <ErrorTips
+          onRetry={this.handleRetry}
+          navigation={this.props.navigation}
+          title={this.urlObj.query.title}
+        />
       ) : (
-        <Suspense key={refreshTag} fallback={<Loading navigation={this.props.navigation} />}>
+        <Suspense key={refreshTag} fallback={<Loading />}>
           <RemoteComponent {...this.props} />
         </Suspense>
       );
