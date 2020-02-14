@@ -8,7 +8,7 @@ const noop = () => {};
 export type ErrorTipsProps = { onRetry?: () => void };
 
 type ContainerOptions = {
-  Loading: React.ComponentType;
+  Loading: React.ComponentType<{ navigation }>;
   ErrorTips: React.ComponentType<ErrorTipsProps>;
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
@@ -83,7 +83,7 @@ export function createContainer({
       return error ? (
         <ErrorTips onRetry={this.handleRetry} />
       ) : (
-        <Suspense key={refreshTag} fallback={<Loading />}>
+        <Suspense key={refreshTag} fallback={<Loading navigation={this.props.navigation} />}>
           <RemoteComponent {...this.props} />
         </Suspense>
       );
