@@ -14,6 +14,14 @@ type ContainerOptions = {
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
   injectRequire: (name: string) => any;
+  trackLoadJSTime?: (log: LoadJSTimeLog) => void;
+};
+
+export type LoadJSTimeLog = {
+  cost: number;
+  url: string;
+  startTime: number;
+  loadedTime: number;
 };
 
 type Props = {
@@ -27,8 +35,9 @@ export function createContainer({
   Loading,
   ErrorTips,
   trackRenderError = noop,
-  injectFetch,
-  injectRequire
+  injectFetch = fetch,
+  injectRequire,
+  trackLoadJSTime
 }: ContainerOptions) {
   if (!Loading) {
     throw 'invailed options, prop `Loading` is required';
@@ -55,11 +64,19 @@ export function createContainer({
     }
 
     buildComponent() {
+      const startTime = Date.now();
       const url = this.props.navigation.getParam('url') || this.props.screenProps.url;
       this.urlObj = new Url(url);
       this.mockDocument = createMockDocument(injectFetch, url);
       const RemoteComponent = React.lazy(() =>
-        loadRemoteComponent(url, injectFetch || fetch, injectRequire, this.mockDocument)
+        loadRemoteComponent(url, injectFetch, injectRequire, this.mockDocument).then(component => {
+          const loadedTime = Date.now();
+          const cost = loadedTime - startTime;
+          if (typeof trackLoadJSTime === 'function') {
+            trackLoadJSTime({ cost, startTime, loadedTime, url });
+          }
+          return component;
+        })
       );
       this.RemoteComponent = RemoteComponent;
     }
