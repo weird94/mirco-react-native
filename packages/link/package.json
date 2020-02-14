@@ -1,6 +1,6 @@
 {
   "name": "@crgt/gtrn-link",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
-    "@crgt/dynamic-rn": "^1.1.2",
+    "@crgt/dynamic-rn": "^1.1.3",
     "@types/react": "^16.9.19",
     "@types/react-native": "^0.61.10",
     "babel-preset-latest": "^6.24.1",
