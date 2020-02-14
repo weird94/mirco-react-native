@@ -16,7 +16,9 @@ import netError from './netError.icon';
 const containerStyle: StyleProp<ViewStyle> = {
   flex: 1,
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  backgroundColor: '#f5f5f5',
+  paddingBottom: 50
 };
 
 const iconStyle: StyleProp<ImageStyle> = {
@@ -29,13 +31,12 @@ const labelStyle: StyleProp<TextStyle> = {
   height: 22,
   fontSize: 18,
   color: '#323233',
-  marginBottom: 5
+  marginBottom: 8
 };
 
 const tipsStyle: StyleProp<TextStyle> = {
   fontSize: 12,
   height: 16.5,
-
   color: '#969799'
 };
 
