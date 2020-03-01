@@ -6,10 +6,15 @@ import Url from 'url-parse';
 
 const noop = () => {};
 
-export type ErrorTipsProps = { onRetry?: () => void; navigation: any; title?: string };
+export type CommonProps = {
+  navigation: any;
+  title?: string;
+};
+
+export type ErrorTipsProps = { onRetry?: () => void } & CommonProps;
 
 type ContainerOptions = {
-  Loading: React.ComponentType;
+  Loading: React.ComponentType<CommonProps>;
   ErrorTips: React.ComponentType<ErrorTipsProps>;
   trackRenderError?: (error: Error, errorInfo: ErrorInfo) => void;
   injectFetch?: typeof fetch;
@@ -107,7 +112,10 @@ export function createContainer({
           title={this.urlObj.query.title}
         />
       ) : (
-        <Suspense key={refreshTag} fallback={<Loading />}>
+        <Suspense
+          key={refreshTag}
+          fallback={<Loading navigation={this.props.navigation} title={this.urlObj.query.title} />}
+        >
           <RemoteComponent {...this.props} />
         </Suspense>
       );
