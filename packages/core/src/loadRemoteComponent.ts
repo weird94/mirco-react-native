@@ -7,11 +7,11 @@ export default function loadRemoteComponent(
   mockDocument: any
 ) {
   return _fetch(url)
-    .then(res => res.text())
-    .then(body => {
+    .then((res) => res.text())
+    .then((code) => {
       // webpack commonjs 规范模块
       const exports: any = {};
-      const createComponent = new Function('exports', 'require', 'document', 'window', body);
+      const createComponent = new Function('exports', 'require', 'document', 'window', code);
       createComponent(exports, injectRequire, mockDocument, mockWindow);
       return exports.__esModule ? exports.default : exports;
     });
