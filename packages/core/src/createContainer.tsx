@@ -42,7 +42,7 @@ export function createContainer({
   trackRenderError = noop,
   injectFetch = fetch,
   injectRequire,
-  trackLoadJSTime
+  trackLoadJSTime,
 }: ContainerOptions) {
   if (!Loading) {
     throw 'invailed options, prop `Loading` is required';
@@ -62,7 +62,7 @@ export function createContainer({
 
       this.state = {
         error: false,
-        refreshTag: 0
+        refreshTag: 0,
       };
 
       this.buildComponent();
@@ -74,14 +74,16 @@ export function createContainer({
       this.urlObj = new Url(url);
       this.mockDocument = createMockDocument(injectFetch, url);
       const RemoteComponent = React.lazy(() =>
-        loadRemoteComponent(url, injectFetch, injectRequire, this.mockDocument).then(component => {
-          const loadedTime = Date.now();
-          const cost = loadedTime - startTime;
-          if (typeof trackLoadJSTime === 'function') {
-            trackLoadJSTime({ cost, startTime, loadedTime, url });
+        loadRemoteComponent(url, injectFetch, injectRequire, this.mockDocument).then(
+          (component) => {
+            const loadedTime = Date.now();
+            const cost = loadedTime - startTime;
+            if (typeof trackLoadJSTime === 'function') {
+              trackLoadJSTime({ cost, startTime, loadedTime, url });
+            }
+            return component;
           }
-          return component;
-        })
+        )
       );
       this.RemoteComponent = RemoteComponent;
     }
@@ -97,8 +99,8 @@ export function createContainer({
     };
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-      trackRenderError(error, errorInfo);
       this.setState({ error: true });
+      trackRenderError(error, errorInfo);
     }
 
     render() {

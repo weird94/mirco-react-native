@@ -2,5 +2,6 @@
   "printWidth": 100,
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "selfClosing": true
+  "selfClosing": true,
+  "trailingComma": "es5"
 }

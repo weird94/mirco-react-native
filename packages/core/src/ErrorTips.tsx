@@ -5,10 +5,9 @@ import {
   Image,
   ViewStyle,
   StyleProp,
-  Button,
   ImageStyle,
   TextStyle,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import { ErrorTipsProps } from './createContainer';
 import netError from './netError.icon';
@@ -18,26 +17,26 @@ const containerStyle: StyleProp<ViewStyle> = {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: '#f5f5f5',
-  paddingBottom: 50
+  paddingBottom: 50,
 };
 
 const iconStyle: StyleProp<ImageStyle> = {
   width: 130,
   height: 130,
-  marginBottom: 16
+  marginBottom: 16,
 };
 
 const labelStyle: StyleProp<TextStyle> = {
   height: 22,
   fontSize: 18,
   color: '#323233',
-  marginBottom: 8
+  marginBottom: 8,
 };
 
 const tipsStyle: StyleProp<TextStyle> = {
   fontSize: 12,
   height: 16.5,
-  color: '#969799'
+  color: '#969799',
 };
 
 const ErrorTips = (props: ErrorTipsProps) => {
